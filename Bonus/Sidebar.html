@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+
+    <!-- Add CSS code to format the sidebar from google stylesheet -->
+    <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+
+    <style>
+      body {
+        padding: 20px;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <div class="block">
+      <input type="button" class="create" value="Get Sheet Size" onclick="getSheetSize()" /> 
+    </div>
+
+    <div class="block">
+      <input type="button" value="Close" onclick="google.script.host.close()" />
+    </div>
+
+    <div class="block">
+      <div id="results"></div> 
+    </div>
+    
+    <script>
+      function getSheetSize() {
+
+        // retrieve sheet size
+        google.script.run.withSuccessHandler(displayResults).auditAllSheets();
+
+      }
+
+      function displayResults(results) {
+
+        // display results in sidebar
+        document.getElementById("results").innerHTML = results;
+
+      }
+    </script>
+  </body>
+</html>
