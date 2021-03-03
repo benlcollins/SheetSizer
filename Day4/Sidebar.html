@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>
+  <body>
+    
+    <input type="button" value="Get Sheet Size" onclick="getSheetSize()" />
+
+    <input type="button" value="Close" onclick="google.script.host.close()" />
+
+    <div id="results"></div>
+
+  <script>
+      function getSheetSize() {
+
+        // retrieve sheet size
+        google.script.run.withSuccessHandler(displayResults).auditSheet();
+
+      }
+
+      function displayResults(results) {
+
+        // display results in sidebar
+        document.getElementById("results").innerHTML = results;
+
+      }
+
+    </script>
+  </body>
+</html>
+
