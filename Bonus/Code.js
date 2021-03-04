@@ -22,6 +22,35 @@ function showSidebar() {
 }
 
 /**
+* Get size data for a given sheet url
+*/
+function auditSheet(sheet) {
+
+  // get spreadsheet object
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+
+  // get sheet name
+  const name = sheet.getName();
+
+  // get current sheet dimensions
+  const maxRows = sheet.getMaxRows();
+  const maxCols = sheet.getMaxColumns();
+  const totalCells = maxRows * maxCols;
+
+  // put variables into object
+  const sheetSize = {
+    name: name,
+    rows: maxRows,
+    cols: maxCols,
+    total: totalCells
+  }
+
+  // return object to function that called it
+  return sheetSize;
+
+}
+
+/**
 * Audits all Sheets and passes full data back to sidebar
 */
 function auditAllSheets() {
@@ -57,34 +86,5 @@ function auditAllSheets() {
 
   // pass results back to sidebar
   return output;
-
-}
-
-/**
-* Get size data for a given sheet url
-*/
-function auditSheet(sheet) {
-
-  // get spreadsheet object
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
-
-  // get sheet name
-  const name = sheet.getName();
-
-  // get current sheet dimensions
-  const maxRows = sheet.getMaxRows();
-  const maxCols = sheet.getMaxColumns();
-  const totalCells = maxRows * maxCols;
-
-  // put variables into object
-  const sheetSize = {
-    name: name,
-    rows: maxRows,
-    cols: maxCols,
-    total: totalCells
-  }
-
-  // return object to function that called it
-  return sheetSize;
 
 }
