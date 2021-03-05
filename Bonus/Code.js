@@ -1,4 +1,9 @@
 /**
+ * Global Variable
+ */
+const MAX_SHEET_CELLS = 5000000;
+
+/**
  * Add custom menu to sheet
  */
 function onOpen() {
@@ -82,7 +87,7 @@ function auditAllSheets() {
 
   // add grand total calculation to the output string
   output = output + '<br><hr><br>' + 
-    'You have used ' + ((grandTotal / 5000000)*100).toFixed(2) + '% of your 5 million cell limit.';
+    'You have used ' + ((grandTotal / MAX_SHEET_CELLS)*100).toFixed(2) + '% of your 5 million cell limit.';
 
   // pass results back to sidebar
   return output;
